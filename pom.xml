@@ -16,7 +16,7 @@
     <properties>
         <java.version>11</java.version>
         <dockerfile-maven-version>1.4.13</dockerfile-maven-version>
-        <docker.image.prefix>kumarsaroj18/microservices-in-action</docker.image.prefix>
+        <docker.image.prefix>kumarsaroj18</docker.image.prefix>
     </properties>
     <dependencies>
         <dependency>
@@ -37,10 +37,10 @@
             <version>1.18.24</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
-        </dependency>
+        </dependency>-->
 
 
         <dependency>
@@ -61,7 +61,14 @@
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>dockerfile-maven-plugin</artifactId>
-                <version>${dockerfile-maven-version}</version>
+                <version>1.4.13</version>
+                <configuration>
+                    <repository>${docker.image.prefix}/${project.artifactId}</repository>
+                    <tag>${project.version}</tag>
+                    <buildArgs>
+                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
+                </configuration>
                 <executions>
                     <execution>
                         <id>default</id>
@@ -72,13 +79,6 @@
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <repository>${docker.image.prefix}/${project.artifactId}</repository>
-                    <tag>${project.version}</tag>
-                    <buildArgs>
-                        <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
-                    </buildArgs>
-                </configuration>
             </plugin>
         </plugins>
     </build>
