@@ -2,12 +2,25 @@ spring:
   application:
     name: config-server
   profiles:
-    active: native
+    active:
+      - native
+      - git
+#      - vault
   cloud:
     config:
       server:
         native:
           search-locations: [classpath:/, classpath:/config]
+        git:
+          uri: https://github.com/spring-related/microservice-in-action-config.git
+          search-paths: licensing-service
+          default-label: mainline
+#        vault:
+#          port: 8200
+#          host: host.docker.internal # this is used when the vault service is running on host machine
+#          host: vault
+#          kv-version: 2
+#          token: myroot
 
 server:
   port: 8071

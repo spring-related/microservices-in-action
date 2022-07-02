@@ -1,11 +1,11 @@
 package com.optimagrowth.license.repository;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Repository
 public class MessageRepository {
     private List<String> list = new ArrayList<>();
 

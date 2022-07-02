@@ -16,7 +16,6 @@ import javax.persistence.Table;
 public class License extends RepresentationModel<License> {
     @Id
     @Column(name = "license_id", nullable = false)
-    private int id;
     private String licenseId;
 
     private String description;
@@ -32,4 +31,9 @@ public class License extends RepresentationModel<License> {
 
     @Column(name = "comment")
     private String comment;
+
+    public License withComment(String comment) {
+        this.setComment(comment);
+        return this;
+    }
 }

@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "postgres"
-      POSTGRES_DB:       "ostock_dev"
+      POSTGRES_DB: "ostock_dev"
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/1-init.sql
       - ./data.sql:/docker-entrypoint-initdb.d/2-data.sql
@@ -16,7 +16,7 @@ services:
         aliases:
           - "database"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -34,7 +34,7 @@ services:
       PROFILE: "dev"
       SPRING_PROFILES_ACTIVE: "dev"
       CONFIGSERVER_URI: "http://configserver:8071"
-      CONFIGSERVER_PORT:   "8071"
+      CONFIGSERVER_PORT: "8071"
       DATABASESERVER_PORT: "5432"
     depends_on:
       database:

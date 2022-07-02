@@ -33,7 +33,7 @@ $ mvn clean package dockerfile:build
 $ docker-compose -f docker/docker-compose.yml up
 
 # Both the commands can be combined and run together on a single line
-$ mvn clean package dockerfile:build && docker-compose -f docker/docker-compose.yml up
+$ mvn clean package dockerfile:build && docker-compose -f docker/docker-compose.yml up --remove-orphan
 ```
 
 # The build command
