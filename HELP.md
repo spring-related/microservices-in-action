@@ -22,7 +22,7 @@ $ git clone https://github.com/kumarsaroj18/spring-microservices-in-action
 
 # Go into the repository, by chaning to the directory where you have downloaded the 
 # chapter 5 source code
-$ cd chapter5
+$ cd chapter6
 
 # For this particular project, we just need to go to the root directory of the project
 # To build the code examples as a docker image, open a command-line 
@@ -33,7 +33,7 @@ $ mvn clean package dockerfile:build
 $ docker-compose -f docker/docker-compose.yml up
 
 # Both the commands can be combined and run together on a single line
-$ mvn clean package dockerfile:build && docker-compose -f docker/docker-compose.yml up --remove-orphan
+$ mvn clean package dockerfile:build && docker-compose -f docker/docker-compose.yml up --remove-orphans
 ```
 
 # The build command

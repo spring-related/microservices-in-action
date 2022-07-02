@@ -17,7 +17,6 @@
     <properties>
         <docker.image.prefix>kumarsaroj18</docker.image.prefix>
         <java.version>11</java.version>
-        <dockerfile-maven-version>1.4.13</dockerfile-maven-version>
         <spring-cloud.version>2021.0.3</spring-cloud.version>
     </properties>
     <dependencies>
