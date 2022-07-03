@@ -8,7 +8,7 @@ Welcome to Spring Microservices in Action.
 3.  A Postgres SQL database used to hold the data.
 
 ## Initial Configuration
-1.	Apache Maven (http://maven.apache.org)  All of the code examples in this book have been compiled with Java version 11.
+1.	Apache Maven (http://maven.apache.org)  All the code examples in this project have been compiled with Java version 11.
 2.	Git Client (http://git-scm.com)
 3.  Docker(https://www.docker.com/products/docker-desktop)
 
