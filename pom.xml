@@ -19,12 +19,13 @@
     <properties>
         <docker.image.prefix>kumarsaroj18</docker.image.prefix>
         <java.version>11</java.version>
-        <dockerfile-maven-version>1.4.13</dockerfile-maven-version>
     </properties>
 
     <modules>
         <module>config-server</module>
         <module>licensing-service</module>
+        <module>eureka-server</module>
+        <module>organization-service</module>
     </modules>
     <build>
         <plugins>
