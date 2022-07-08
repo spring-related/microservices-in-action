@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: gateway-server
+  profiles:
+    active: default
+  cloud:
+    enabled: true
+    config:
+      uri: http://configserver:8071
+      failFast: true
+      retry:
+        maxAttempts: 20
+
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    com.optimagrowth: DEBUG

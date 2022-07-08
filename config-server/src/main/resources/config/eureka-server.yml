@@ -1,3 +1,9 @@
+spring:
+  application:
+    name: eureka-server
+  boot:
+    admin:
+      context-path: /admin
 server:
   port: 8070    # sets the listening port for eureka service
 eureka:
@@ -11,3 +17,9 @@ eureka:
         http://${eureka.instance.hostname}:${server.port}/eureka/
   server:
     waitTimeInMsWhenSyncEmpty: 5     # sets the initial time to wait before the server takes request
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
