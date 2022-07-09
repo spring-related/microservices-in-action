@@ -35,4 +35,8 @@ public class OrganizationService {
     public void delete(Organization organization){
         repository.deleteById(organization.getId());
     }
+
+    public void deleteById(String id){
+        repository.deleteById(id);
+    }
 }
