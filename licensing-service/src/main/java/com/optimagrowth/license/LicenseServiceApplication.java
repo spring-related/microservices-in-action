@@ -43,17 +43,4 @@ public class LicenseServiceApplication {
         return messageSource;
     }
 
-    @LoadBalanced
-    @Bean("loadBalancedRestTemplate")
-    public RestTemplate getRestTemplate(){
-        RestTemplate template = new RestTemplate();
-        List<ClientHttpRequestInterceptor> interceptors = template.getInterceptors();
-        if (null == interceptors) {
-            template.setInterceptors(Collections.singletonList(new UserContextInterceptor()));
-        } else {
-            interceptors.add(new UserContextInterceptor());
-            template.setInterceptors(interceptors);
-        }
-        return template;
-    }
 }

@@ -25,7 +25,6 @@ public class OrganizationService {
         organization.setId( UUID.randomUUID().toString());
         organization = repository.save(organization);
         return organization;
-
     }
 
     public void update(Organization organization){
