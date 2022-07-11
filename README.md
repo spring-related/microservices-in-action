@@ -35,6 +35,16 @@ $ docker-compose -f docker/docker-compose.yml up
 # Both the commands can be combined and run together on a single line
 $ mvn clean package dockerfile:build && docker-compose -f docker/docker-compose.yml up --remove-orphans
 ```
+I was running my application inside WSL2 backed by Ubuntu, so in order to access the keycloak admin
+console from the host OS (Windows 11 in my case), you should edit both /etc/hosts inside wsl2-linux and
+windows host file.
+```asciidoc
+# inside /etc/host, append following line
+127.0.0.1 Keycloak
+
+# and inside Windows/System 32/drivers/etc/host file, append the following line
+::1 Keycloak
+```
 
 # The build command
 

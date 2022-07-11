@@ -1,6 +1,8 @@
 package com.optimagrowth.license.service.client;
 
 import com.optimagrowth.license.model.Organization;
+import org.keycloak.adapters.springsecurity.client.KeycloakRestTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -10,17 +12,25 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class OrganizationRestTemplateClient {
 
-    private final RestTemplate restTemplate;
+    /*private final RestTemplate restTemplate;
 
     public OrganizationRestTemplateClient(@Qualifier("loadBalancedRestTemplate") RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
+    }*/
+
+    private final KeycloakRestTemplate restTemplate;
+
+    public OrganizationRestTemplateClient(@Qualifier("keyCloakRestTemplate") KeycloakRestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
     }
 
-    public Organization getOrganization(String organizationId){
+    public Organization getOrganization(String organizationId) {
         ResponseEntity<Organization> restExchange = restTemplate.exchange(
-                                                "http://organization-service/v1/organization/{organizationId}",
-                                                HttpMethod.GET,
-                                                null, Organization.class, organizationId);
+                "http://gateway:8072/organization/v1/organization/{organizationId}",
+                HttpMethod.GET,
+                null,
+                Organization.class,
+                organizationId);
 
         return restExchange.getBody();
     }

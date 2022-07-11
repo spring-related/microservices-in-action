@@ -78,7 +78,7 @@ services:
       configserver:
         condition: service_started
     ports:
-      - "8080:8080"
+      - "8180:8080"
       - "8000:8000"
     networks:
       - backend
@@ -98,6 +98,29 @@ services:
       - "8081:8081"
     networks:
       - backend
+
+  keycloak:
+    image: jboss/keycloak
+    restart: always
+    environment:
+      KEYCLOAK_VERSION: 6.0.1
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+    volumes:
+      - ./realm-export.json:/opt/jboss/keycloak/realm-export.json
+      - ./keycloak-db:/opt/jboss/keycloak/standalone/data
+    command:
+      - "-b 0.0.0.0"
+      - "-Dkeycloak.import=/opt/jboss/keycloak/realm-export.json"
+      - "-Dkeycloak.profile.feature.scripts=enabled"
+      - "-Dkeycloak.profile.feature.upload_scripts=enabled"
+      - "-Dkeycloak.migration.strategy=IGNORE_EXISTING"
+    ports:
+      - "8080:8080"
+    networks:
+      backend:
+        aliases:
+          - "keycloak"
 networks:
   backend:
     driver: bridge
